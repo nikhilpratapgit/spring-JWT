@@ -16,33 +16,19 @@ public class UserService {
         this.repository = repository;
     }
 
-    public User create(User user) {
-        return repository.save(user);
-    }
-
     public List<User> getAll() {
-        return repository.findAll();
+        return repository.getAllUsers();
     }
 
     public User getById(UUID id) {
-        return repository.findById(id).orElse(null);
+        return repository.findUserById(id).orElse(null);
     }
 
-    public User update(UUID id, User user) {
-
-        User existing = repository.findById(id).orElse(null);
-
-        if (existing == null) {
-            return null;
-        }
-
-        existing.setName(user.getName());
-        existing.setEmail(user.getEmail());
-
-        return repository.save(existing);
+    public int update(UUID id, User user) {
+        return repository.UpdateUserName(id,user.getName());
     }
 
     public void delete(UUID id) {
-        repository.deleteById(id);
+        repository.deleteUserById(id);
     }
 }

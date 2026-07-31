@@ -17,6 +17,7 @@ public class UserAuth {
     }
     @PostMapping("/signup")
     public User signUp(@RequestBody User user){
+        System.out.println("singup api hit");
         return service.signUp(user);
     }
     @PostMapping("/login")

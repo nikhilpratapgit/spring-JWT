@@ -17,10 +17,10 @@ public class UserController {
         this.service = service;
     }
 
-    @PostMapping
-    public User create(@RequestBody User user) {
-        return service.create(user);
-    }
+//    @PostMapping
+//    public User create(@RequestBody User user) {
+//        return service.create(user);
+//    }
 
     @GetMapping
     public List<User> getAll() {
@@ -33,7 +33,7 @@ public class UserController {
     }
 
     @PutMapping("/{id}")
-    public User update(@PathVariable UUID id,
+    public int update(@PathVariable UUID id,
                        @RequestBody User user) {
 
         return service.update(id, user);

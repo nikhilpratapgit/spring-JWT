@@ -6,6 +6,8 @@ import com.example.demo.security.JwtUtil;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.util.UUID;
+
 @Service
 public class AuthService {
     private final UserRepository repository;
@@ -27,8 +29,8 @@ public class AuthService {
             throw new RuntimeException("Email already exists");
         }
         user.setPassword(passwordEncoder.encode(user.getPassword()));
-
-        repository.save(user);
+        System.out.println("in service layer");
+        repository.insertUser(UUID.randomUUID(),user.getName(),user.getEmail(),user.getPassword());
 
         return user;
     }
